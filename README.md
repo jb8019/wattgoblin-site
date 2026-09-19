@@ -78,3 +78,33 @@ The page covers:
 IMPORTANT: This draft is intended as a transparent project disclosure, not a substitute for legal advice.
 Before launch, have a qualified attorney review the final public wording if practical, especially any contest,
 giveaway, buyback, burn, revenue-allocation or utility claims.
+
+
+## V5 — Final for now
+- Adds a planned project stake / strategic reserve target of up to 10% of total $WGBL supply.
+- Planned purchases are discretionary and are explicitly not price support.
+- Adds official Discord to the roadmap.
+- Adds a WattGoblin community mining pool to the roadmap.
+- Mining-pool rules/economics must be published separately before launch.
+- Holding $WGBL does not automatically create mining-pool access, payouts or yield.
+
+
+## V7 — Pre-launch site completion
+Added:
+- Official Links / Verification block
+- Scam & wallet-security warning
+- Token plan with planned 1B supply and 10% project stake/reserve target
+- Creator/Project Operator section (creator-owned, one-person team, regular 5–7 day work schedule, organic community-driven growth)
+- FAQ page
+- Transparency / Updates log
+- Stronger official Discord roadmap and verification language
+- Dedicated community-mining-pool policy
+- Community-pool mining rewards reserved for community-scheduled $WGBL buybacks/burns and excluded from creator compensation
+- Legal page consistency for creator compensation vs. mining-pool rewards
+
+Before launch:
+1. Set the real launch date/time in config.js.
+2. Replace COMING AT LAUNCH with the verified contract address.
+3. Add the verified Pump.fun URL.
+4. Only add a Discord URL after the official server actually exists.
+5. Final mining-pool implementation should publish technical rules and legal terms before going live.
