@@ -1,42 +1,110 @@
-# WattGoblin Website V10 — V7 Style Restored
+# WattGoblin Website V2
 
-This package restores the richer pre-launch presentation from the earlier WattGoblin V7 lineage and adds the official developer fee wallet without removing the older features.
+This is the upgraded WattGoblin.xyz static site for GitHub Pages.
 
-## Restored / retained
-- Animated grid + neon mining aesthetic
-- Scrolling mining / compute ticker
-- Launch countdown console
-- Live system clock
-- Live project-status timeline feed
-- Rich vertical roadmap timeline with status badges
-- Community Terminal with Giscus / GitHub Discussions
-- Project, Roadmap, Community, Legal & Transparency pages
-- WattGoblin mascot asset
-- GitHub Pages `CNAME` for `wattgoblin.xyz`
+## What changed
+- More distinctive cyber/mining visual design
+- Live launch countdown component
+- New Project page with intentions and goals
+- New Roadmap page
+- Stronger official-contract / anti-impersonation messaging
+- Mobile responsive layout
 
-## Official developer fee wallet
-OFFICIAL @WattGoblinSOL DEVELOPER FEE WALLET
+## IMPORTANT: Set the launch countdown
+Open `config.js` and replace:
 
-`BC92zfkGFWNzjEkgMxfPMB4BNDcrC5mXWP6zizcd4nZS`
+    launchISO: null
 
-The wallet is linked to Solscan on the Home, Project, Legal pages and footer.
+with the exact launch time in ISO-8601 format, for example:
 
-## Countdown
-The countdown is intentionally in `LAUNCH TIME LOCKING IN` mode because no official launch date is configured yet.
-When the date is final, edit `config.js`:
+    launchISO: "2026-09-25T18:00:00-07:00"
 
-```js
-launchDate: "2026-09-25T18:00:00-07:00",
-```
+Do not use the example unless that is actually the intended launch time.
 
-Use the actual official date/time; the site will begin counting down automatically.
+## Update the live GitHub site
+Upload/replace these files in the root of the existing `wattgoblin-site` repository:
+- index.html
+- project.html
+- roadmap.html
+- styles.css
+- config.js
+- script.js
+- CNAME
+- README.md
+- assets/ folder
 
-## Upload to GitHub Pages
-1. Extract this ZIP.
-2. Upload **the files inside the extracted folder** to the root of `jb8019/wattgoblin-site`.
-3. Replace the older files when GitHub asks.
-4. Commit the changes.
-5. Leave `CNAME` and `.nojekyll` in the repository root.
+GitHub Pages should redeploy automatically after the commit.
 
-## Notes
-The live site timeline is a client-side project-status display, not external market, blockchain, exchange, or mining telemetry.
+## At token launch
+In `index.html`, replace `COMING AT LAUNCH` with the verified official contract address.
+
+The roadmap is intentionally framed as goals rather than guaranteed promises.
+
+
+## Community Terminal
+V3 adds `community.html`, a public feedback/community page designed for GitHub Discussions via Giscus.
+
+### To make comments live
+1. In GitHub repository Settings/General, enable **Discussions**.
+2. Open the repository's Discussions tab and create/use a category such as **Suggestions**.
+3. Go to https://giscus.app/
+4. Configure it for `jb8019/wattgoblin-site`.
+5. Copy the generated embed script.
+6. Open `community.html`.
+7. Replace the placeholder inside `#giscus-container` with the real Giscus script.
+
+This requires visitors to sign in with GitHub to post. If you later want anonymous/no-GitHub submissions,
+use a separate form service in addition to the public board.
+
+
+## V4 — Legal & Transparency
+V4 adds `legal.html` and links it throughout the site.
+
+The page covers:
+- token nature and risk disclosures
+- no equity/profit-share/revenue rights
+- creator fees and creator/project revenue
+- intended uses of revenue
+- developer compensation/personal living expenses disclosure
+- possible hardware/mining/compute spending
+- community initiatives
+- buybacks/burns/giveaways as optional, not promised
+- wallet/contract transparency
+- community moderation
+- third-party services/privacy
+- taxes/compliance
+- change/version policy
+
+IMPORTANT: This draft is intended as a transparent project disclosure, not a substitute for legal advice.
+Before launch, have a qualified attorney review the final public wording if practical, especially any contest,
+giveaway, buyback, burn, revenue-allocation or utility claims.
+
+
+## V5 — Final for now
+- Adds a planned project stake / strategic reserve target of up to 10% of total $WGBL supply.
+- Planned purchases are discretionary and are explicitly not price support.
+- Adds official Discord to the roadmap.
+- Adds a WattGoblin community mining pool to the roadmap.
+- Mining-pool rules/economics must be published separately before launch.
+- Holding $WGBL does not automatically create mining-pool access, payouts or yield.
+
+
+## V7 — Pre-launch site completion
+Added:
+- Official Links / Verification block
+- Scam & wallet-security warning
+- Token plan with planned 1B supply and 10% project stake/reserve target
+- Creator/Project Operator section (creator-owned, one-person team, regular 5–7 day work schedule, organic community-driven growth)
+- FAQ page
+- Transparency / Updates log
+- Stronger official Discord roadmap and verification language
+- Dedicated community-mining-pool policy
+- Community-pool mining rewards reserved for community-scheduled $WGBL buybacks/burns and excluded from creator compensation
+- Legal page consistency for creator compensation vs. mining-pool rewards
+
+Before launch:
+1. Set the real launch date/time in config.js.
+2. Replace COMING AT LAUNCH with the verified contract address.
+3. Add the verified Pump.fun URL.
+4. Only add a Discord URL after the official server actually exists.
+5. Final mining-pool implementation should publish technical rules and legal terms before going live.
