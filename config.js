@@ -1,5 +1,11 @@
-// Set launchISO to an exact ISO-8601 date/time when the launch is locked.
-// Example: "2026-09-25T18:00:00-07:00"
 window.WATTGOBLIN_CONFIG = {
-  launchISO: null
+  siteName: "WattGoblin",
+  symbol: "$WGBL",
+  xHandle: "@WattGoblinSOL",
+  xUrl: "https://x.com/WattGoblinSOL",
+  domain: "https://wattgoblin.xyz",
+  creatorFeeWalletLabel: "OFFICIAL @WattGoblinSOL DEVELOPER FEE WALLET",
+  creatorFeeWallet: "BC92zfkGFWNzjEkgMxfPMB4BNDcrC5mXWP6zizcd4nZS",
+  creatorFeeWalletExplorer: "https://solscan.io/account/BC92zfkGFWNzjEkgMxfPMB4BNDcrC5mXWP6zizcd4nZS",
+  tokenContractAddress: null
 };
