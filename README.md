@@ -108,3 +108,11 @@ Before launch:
 3. Add the verified Pump.fun URL.
 4. Only add a Discord URL after the official server actually exists.
 5. Final mining-pool implementation should publish technical rules and legal terms before going live.
+
+
+## V8 — Giscus Community Terminal Connected
+The Community Terminal is connected to GitHub Discussions via Giscus.
+
+- Repository: `jb8019/wattgoblin-site`
+- Category: `👺💡 Goblin Ideas`
+- Visitors sign in with GitHub to post or reply.
