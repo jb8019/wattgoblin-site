@@ -133,3 +133,23 @@ The homepage countdown is now self-contained directly inside `index.html`.
 - Homepage asset URLs include a small cache-busting version marker.
 
 If the live site still shows the old page immediately after upload, wait for the GitHub Pages deployment to complete and hard-refresh with Ctrl+F5.
+
+
+## V11 — $WGBL LIVE
+Official launch state updated after successful Pump.fun creation.
+
+- Launch: September 21, 2026 at approximately 9:00 AM PT / 12:00 PM ET
+- Official mint: `FB2QBAbX5KQnVnWjFMyn6d7zNqXWVWqGey4CUm9Kpump`
+- Official Pump.fun page: `https://pump.fun/coin/FB2QBAbX5KQnVnWjFMyn6d7zNqXWVWqGey4CUm9Kpump`
+- Genesis supply: 1,000,000,000 $WGBL
+- Initial project-wallet spend: $29.58
+- Initial project-wallet tokens received: 8,898,168.3486 $WGBL
+- Initial project holding: approximately 0.8898% of genesis supply
+- Countdown replaced with LIVE status
+- Homepage verification area updated
+- Transparency Log updated with actual launch data
+- Legal & Transparency page updated with verified mint and actual initial purchase
+- FAQ updated for post-launch status
+- Roadmap moved from Foundation to live Launch phase
+
+Do not publish changing market cap, profit/loss, or holder-count values as static website facts; they become stale quickly.

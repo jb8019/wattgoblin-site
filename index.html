@@ -5,8 +5,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080a08">
-<link rel="icon" type="image/png" href="assets/favicon.png?v=10">
-<link rel="stylesheet" href="styles.css?v=10">
+<link rel="icon" type="image/png" href="assets/favicon.png?v=11">
+<link rel="stylesheet" href="styles.css?v=11">
 
 <meta name="description" content="WattGoblin — $WGBL on Solana. Mining, compute, hardware, power and goblin-level chaos.">
 <title>WattGoblin | $WGBL</title>
@@ -39,8 +39,8 @@
     <div class="hero-overlay"></div>
     <div class="shell hero-grid">
       <div class="hero-copy">
-        <div class="eyebrow">COMING TO SOLANA</div>
-        <div class="launch-static">OFFICIAL LAUNCH // SEP 21, 2026 · 9:00 AM PT · 12:00 PM ET</div>
+        <div class="eyebrow live-chip">LIVE ON SOLANA // PUMP.FUN</div>
+        <div class="launch-static">LAUNCHED // SEP 21, 2026 · 9:00 AM PT · 12:00 PM ET</div>
         <h1>SMALL GOBLIN.<br><span>BIG WATTS.</span></h1>
         <p class="lede">Mining culture. Compute obsession. Hardware chaos. One goblin who should never have been given access to the power panel.</p>
         <div class="hero-buttons">
@@ -49,23 +49,18 @@
         </div>
       </div>
 
-      <aside class="launch-console" aria-label="Launch countdown">
+      <aside class="launch-console live-console" aria-label="WGBL live status">
         <div class="console-top">
           <span class="status-dot"></span>
-          <span>WGBL // LAUNCH SYSTEM</span>
+          <span>WGBL // LIVE SYSTEM</span>
         </div>
-        <div class="launch-label">T-MINUS</div>
-        <div id="countdown" class="countdown">
-          <div><strong id="days">--</strong><span>DAYS</span></div>
-          <div><strong id="hours">--</strong><span>HRS</span></div>
-          <div><strong id="minutes">--</strong><span>MIN</span></div>
-          <div><strong id="seconds">--</strong><span>SEC</span></div>
-        </div>
-        <div id="launch-date-text" class="launch-date">LAUNCH TIME LOCKING IN</div>
+        <div class="live-status">LIVE</div>
+        <div class="live-sub">$WGBL IS NOW TRADING ON PUMP.FUN</div>
+        <a class="btn btn-primary live-trade-btn" href="https://pump.fun/coin/FB2QBAbX5KQnVnWjFMyn6d7zNqXWVWqGey4CUm9Kpump" target="_blank" rel="noopener">VIEW $WGBL ON PUMP.FUN</a>
         <div class="meter">
-          <span>GRID LOAD</span>
+          <span>GRID STATUS</span>
           <div class="meter-track"><div class="meter-fill"></div></div>
-          <b>4200 W</b>
+          <b>ONLINE</b>
         </div>
       </aside>
     </div>
@@ -108,22 +103,26 @@
     <div>
       <div class="eyebrow">$WGBL STATUS</div>
       <h2>Official token information lives here.</h2>
-      <p>Before launch, no contract address is official. After creation, the verified Solana address will be posted here and on @WattGoblinSOL.</p>
+      <p>$WGBL is live on Solana. Verify the full mint address below before trading and use the official Pump.fun link provided by WattGoblin.xyz or @WattGoblinSOL.</p>
     </div>
     <div class="token-terminal">
       <div class="terminal-row"><span>NETWORK</span><b>SOLANA</b></div>
       <div class="terminal-row"><span>TICKER</span><b>$WGBL</b></div>
-      <div class="terminal-row"><span>PLANNED SUPPLY</span><b>1,000,000,000</b></div>
+      <div class="terminal-row"><span>GENESIS SUPPLY</span><b>1,000,000,000</b></div>
       <div class="terminal-row"><span>LAUNCH</span><b>PUMP.FUN</b></div>
       <div class="terminal-row"><span>PAIR</span><b>SOL</b></div>
-      <div class="contract">
-        <span>OFFICIAL CONTRACT</span>
-        <strong>COMING AT LAUNCH</strong>
+      <div class="contract live-contract">
+        <span>OFFICIAL $WGBL MINT / CONTRACT</span>
+        <strong class="contract-code">FB2QBAbX5KQnVnWjFMyn6d7zNqXWVWqGey4CUm9Kpump</strong>
+        <div class="contract-actions">
+          <button class="copy-contract" type="button" onclick="navigator.clipboard.writeText('FB2QBAbX5KQnVnWjFMyn6d7zNqXWVWqGey4CUm9Kpump').then(()=>{this.textContent='COPIED ✓'; setTimeout(()=>this.textContent='COPY ADDRESS',1800);})">COPY ADDRESS</button>
+          <a class="contract-link" href="https://pump.fun/coin/FB2QBAbX5KQnVnWjFMyn6d7zNqXWVWqGey4CUm9Kpump" target="_blank" rel="noopener">OPEN ON PUMP.FUN ↗</a>
+        </div>
       </div>
       <div class="initial-buy-box">
-        <span>INITIAL PROJECT BUY</span>
-        <strong>$30 WORTH OF SOL</strong>
-        <p>The official project wallet plans an initial $30 purchase of $WGBL at launch. This purchase is the first step toward the project's planned 10% stake / strategic reserve target.</p>
+        <span>LAUNCH PROJECT PURCHASE // COMPLETED</span>
+        <strong>8,898,168.3486 $WGBL</strong>
+        <p>The official project wallet spent $29.58 at launch and received 8,898,168.3486 $WGBL, equal to approximately 0.8898% of the 1,000,000,000-token genesis supply. This holding is the first step toward the disclosed 10% project stake / strategic reserve target.</p>
       </div>
       <div class="reserve-box">
         <span>PLANNED PROJECT STAKE / RESERVE</span>
@@ -157,8 +156,8 @@
       <div class="verify-card pending">
         <span>DISCORD</span><strong>COMING LATER</strong><small>NO OFFICIAL SERVER YET</small>
       </div>
-      <div class="verify-card pending">
-        <span>$WGBL CONTRACT</span><strong>COMING AT LAUNCH</strong><small>DO NOT TRUST OTHER ADDRESSES</small>
+      <div class="verify-card active contract-verify-card">
+        <span>$WGBL CONTRACT</span><strong class="verify-mint">FB2QBAbX5KQnVnWjFMyn6d7zNqXWVWqGey4CUm9Kpump</strong><small>VERIFIED // MATCH BEFORE TRADING</small>
       </div>
     </div>
 
@@ -234,7 +233,7 @@
     <div class="quick-links-grid">
       <a class="quick-link-card" href="faq.html">
         <span>FAQ</span>
-        <h3>Questions before launch?</h3>
+        <h3>Questions about $WGBL?</h3>
         <p>Supply, reserve, creator model, Discord, mining pool, contract verification and more.</p>
       </a>
       <a class="quick-link-card" href="updates.html">
@@ -250,7 +249,7 @@
       <div>
         <div class="eyebrow">NOT JUST A LAUNCH BUTTON</div>
         <h2>There is a roadmap behind the goblin.</h2>
-        <p>The immediate objective is simple: launch cleanly, establish official channels, build a real community identity and then test ideas that fit the mining/compute theme.</p>
+        <p>$WGBL is live. The immediate objective now is to keep official information easy to verify, grow the community organically, publish material project updates and begin testing ideas that fit the mining/compute theme.</p>
       </div>
       <a class="btn btn-primary" href="roadmap.html">VIEW THE ROADMAP</a>
     </div>
@@ -281,59 +280,7 @@
 </footer>
 
 
-<script>
-(function () {
-  // Official $WGBL launch: September 21, 2026 at 9:00 AM Pacific Daylight Time.
-  const target = new Date("2026-09-21T09:00:00-07:00").getTime();
 
-  const els = {
-    days: document.getElementById("days"),
-    hours: document.getElementById("hours"),
-    minutes: document.getElementById("minutes"),
-    seconds: document.getElementById("seconds"),
-    label: document.getElementById("launch-date-text")
-  };
-
-  if (!els.days || !els.hours || !els.minutes || !els.seconds) return;
-
-  if (els.label) {
-    els.label.textContent = "SEP 21, 2026 // 9:00 AM PT // 12:00 PM ET";
-  }
-
-  function pad(n) {
-    return String(Math.max(0, n)).padStart(2, "0");
-  }
-
-  function updateCountdown() {
-    let remaining = target - Date.now();
-
-    if (remaining <= 0) {
-      els.days.textContent = "00";
-      els.hours.textContent = "00";
-      els.minutes.textContent = "00";
-      els.seconds.textContent = "00";
-      if (els.label) els.label.textContent = "$WGBL LAUNCH WINDOW IS LIVE";
-      return;
-    }
-
-    const days = Math.floor(remaining / 86400000);
-    remaining %= 86400000;
-    const hours = Math.floor(remaining / 3600000);
-    remaining %= 3600000;
-    const minutes = Math.floor(remaining / 60000);
-    remaining %= 60000;
-    const seconds = Math.floor(remaining / 1000);
-
-    els.days.textContent = pad(days);
-    els.hours.textContent = pad(hours);
-    els.minutes.textContent = pad(minutes);
-    els.seconds.textContent = pad(seconds);
-  }
-
-  updateCountdown();
-  window.setInterval(updateCountdown, 1000);
-})();
-</script>
 
 </body>
 </html>

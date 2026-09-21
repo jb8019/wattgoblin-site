@@ -487,3 +487,22 @@ p{color:var(--muted)}
 .initial-buy-box>strong{display:block;margin:9px 0 8px;color:var(--lime);font-size:1.18rem}
 .initial-buy-box p{margin:0;font-size:.84rem;color:#aeb7aa}
 .launch-entry{border-top:1px solid rgba(255,242,0,.16)}
+
+
+/* V11 — post-launch live state */
+.live-chip{color:var(--lime)}
+.live-console{text-align:center}
+.live-status{font-size:clamp(3.4rem,8vw,6.4rem);font-weight:1000;line-height:.9;color:var(--lime);text-shadow:0 0 30px rgba(183,255,0,.35);margin:32px 0 10px}
+.live-sub{font:800 .78rem/1.4 ui-monospace,monospace;letter-spacing:.11em;color:#d9e0d5;margin-bottom:22px}
+.live-trade-btn{display:inline-flex;justify-content:center;width:100%;box-sizing:border-box;margin-bottom:24px}
+.live-contract{word-break:break-all}
+.contract-code,.legal-mint{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.contract-code{font-size:.82rem;line-height:1.55}
+.contract-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.copy-contract,.contract-link{border:1px solid rgba(183,255,0,.34);background:#10140d;color:var(--lime);padding:10px 12px;border-radius:8px;font:800 .7rem/1 ui-monospace,monospace;letter-spacing:.08em;text-decoration:none;cursor:pointer}
+.copy-contract:hover,.contract-link:hover{border-color:var(--lime)}
+.verify-mint{font-size:.62rem;line-height:1.4;word-break:break-all}
+.contract-verify-card{overflow:hidden}
+.update-entry code,.legal-mint{word-break:break-all;color:var(--lime)}
+.phase.complete{opacity:.82}
+.phase.complete .phase-status{color:#a8b0a3}
