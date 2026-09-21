@@ -122,3 +122,14 @@ Immediately after launch:
 1. Replace `COMING AT LAUNCH` with the verified official contract address.
 2. Add the official Pump.fun coin URL.
 3. Publish the same verified address on @WattGoblinSOL.
+
+
+## V10 — Countdown Reliability Fix
+The homepage countdown is now self-contained directly inside `index.html`.
+
+- Target: September 21, 2026 at 9:00 AM PT / 12:00 PM ET
+- ISO target: `2026-09-21T09:00:00-07:00`
+- It no longer depends on `config.js` or `script.js` loading on the homepage.
+- Homepage asset URLs include a small cache-busting version marker.
+
+If the live site still shows the old page immediately after upload, wait for the GitHub Pages deployment to complete and hard-refresh with Ctrl+F5.
