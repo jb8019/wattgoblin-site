@@ -108,3 +108,37 @@ Before launch:
 3. Add the verified Pump.fun URL.
 4. Only add a Discord URL after the official server actually exists.
 5. Final mining-pool implementation should publish technical rules and legal terms before going live.
+
+
+## V8 — Giscus Community Terminal Connected
+The Community Terminal is connected to GitHub Discussions via Giscus.
+
+- Repository: `jb8019/wattgoblin-site`
+- Category: `👺💡 Goblin Ideas`
+- Visitors sign in with GitHub to post or reply.
+
+## V9 — Official Developer Fee Wallet Transparency
+
+Added the official `@WattGoblinSOL` Solana developer fee wallet without changing the established V7/V8 site layout:
+
+`BC92zfkGFWNzjEkgMxfPMB4BNDcrC5mXWP6zizcd4nZS`
+
+- Published on the homepage verification area.
+- Added to Legal & Transparency under Creator Fees and Wallet & Contract Transparency.
+- Recorded in the Transparency Log on September 20, 2026.
+- Added direct verification links to Solscan and Solana Explorer.
+- Clarified that this is the creator/developer fee wallet, not the future community mining-pool/community-treasury wallet.
+
+No CSS, JavaScript, countdown, roadmap, community terminal, navigation, artwork, or other page layout was changed for this update.
+
+
+## V10 — Locked V7 Layout + Live Community + Dated Transparency
+
+Preserved the established V7 visual/layout baseline and retained the live V8 Giscus Community Terminal.
+
+- Giscus remains connected to `jb8019/wattgoblin-site` / `👺💡 Goblin Ideas`.
+- Official `@WattGoblinSOL` developer fee wallet remains published and explorer-verifiable.
+- Added a September 20, 2026 Transparency Log entry documenting the Giscus Community Terminal activation.
+- Kept the September 20, 2026 wallet transparency entry.
+- Added an explicit policy note that material project and website changes will be date-stamped in the Transparency Log when published.
+- No CSS, JavaScript, countdown, roadmap, navigation, artwork, page structure, or visual layout was changed.
