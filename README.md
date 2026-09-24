@@ -153,3 +153,14 @@ Official launch state updated after successful Pump.fun creation.
 - Roadmap moved from Foundation to live Launch phase
 
 Do not publish changing market cap, profit/loss, or holder-count values as static website facts; they become stale quickly.
+
+
+## V12 — Official Telegram Community
+- Official Telegram community added: `https://t.me/wattgoblin`
+- Homepage Official Links / verification grid updated
+- Community page updated with the live Telegram community
+- Transparency Log updated on September 24, 2026
+- Legal & Transparency page updated with Telegram third-party/security disclosure
+- FAQ updated with the verified Telegram link
+- Telegram added to site footers
+- Existing $WGBL live launch information, contract address, styling, Giscus integration, roadmap and other content preserved
