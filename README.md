@@ -156,7 +156,7 @@ Do not publish changing market cap, profit/loss, or holder-count values as stati
 
 
 ## V12 — Official Telegram Community
-- Official Telegram community added: `https://t.me/wattgoblin`
+- Official Telegram community added: `https://t.me/wattgoblins`
 - Homepage Official Links / verification grid updated
 - Community page updated with the live Telegram community
 - Transparency Log updated on September 24, 2026
