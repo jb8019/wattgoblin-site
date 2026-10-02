@@ -164,3 +164,16 @@ Do not publish changing market cap, profit/loss, or holder-count values as stati
 - FAQ updated with the verified Telegram link
 - Telegram added to site footers
 - Existing $WGBL live launch information, contract address, styling, Giscus integration, roadmap and other content preserved
+
+
+## V14 — Official Community Mining BTC Treasury
+- Official community mining treasury network: Bitcoin (BTC)
+- Address type: Native SegWit (bc1q)
+- Official BTC treasury wallet: `bc1qhvd4zpzpu6hrvkxyl0kh4hndlxwssxq0h5w8f0`
+- Designated for the planned Kryptex-based WattGoblin community mining operation
+- Wallet is live and publicly auditable on-chain
+- Community mining pool/operation is still under development and is not yet represented as operational
+- Legal & Transparency page updated with the treasury disclosure and block-explorer link
+- Transparency Log updated on October 1, 2026
+- All existing V13 site content, Telegram links, launch information, contract address, styling and assets preserved
+
