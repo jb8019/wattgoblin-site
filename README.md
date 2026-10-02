@@ -177,3 +177,9 @@ Do not publish changing market cap, profit/loss, or holder-count values as stati
 - Transparency Log updated on October 1, 2026
 - All existing V13 site content, Telegram links, launch information, contract address, styling and assets preserved
 
+## V15 — Community BTC Treasury visibility update (October 1, 2026)
+
+- Added the official WattGoblin Community Mining BTC Treasury directly to `community.html`.
+- Official BTC address: `bc1qhvd4zpzpu6hrvkxyl0kh4hndlxwssxq0h5w8f0` (Bitcoin Native SegWit).
+- Community page now states that the treasury wallet is live while the Kryptex community mining pool remains in setup and is not yet operational.
+- Updated the Legal & Transparency page “Last Updated” date to October 1, 2026.
