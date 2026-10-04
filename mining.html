@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080a08">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="stylesheet" href="styles.css?v=16">
+<script defer src="config.js?v=16"></script>
+<script defer src="script.js?v=16"></script>
+<script defer src="mining.js?v=16"></script>
+<meta name="description" content="WattGoblin Community Mining — live Quantus hashrate, workers, treasury accounting, buyback/burn history and public join instructions.">
+<title>Community Mining | WattGoblin</title>
+</head>
+<body>
+<div class="scanlines" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="shell nav">
+    <a class="brand" href="index.html"><img src="assets/favicon.png" alt=""><span>WATTGOBLIN</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="project.html">Project</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="community.html">Community</a>
+      <a href="mining.html">Mining</a>
+      <a href="faq.html">FAQ</a>
+      <a href="legal.html">Legal & Transparency</a>
+      <a href="index.html#token">$WGBL</a>
+      <a class="x-link" href="https://x.com/WattGoblinSOL" target="_blank" rel="noopener">X / @WattGoblinSOL</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero mining-hero">
+    <div class="shell mining-hero-grid">
+      <div>
+        <div class="eyebrow">COMMUNITY MINING // LIVE</div>
+        <h1>THE GOBLIN GRID<br>IS HASHING.</h1>
+        <p class="lede">
+          WattGoblin Community Mining is a public contribution-mining operation currently mining Quantus (QTC)
+          through Kryptex Pool. Live pool telemetry is shown below from Kryptex's public API, while treasury and
+          buyback/burn accounting are tracked separately for transparency.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#join">JOIN THE GRID</a>
+          <a class="btn btn-ghost" href="#dashboard">VIEW LIVE STATS</a>
+        </div>
+      </div>
+      <div class="mining-status-card">
+        <div class="console-top"><span class="status-dot" id="mining-status-dot"></span><span>WATTGOBLIN // QTC TELEMETRY</span></div>
+        <div class="mining-status-body">
+          <span>NETWORK</span><strong>QUANTUS (QTC)</strong>
+          <span>ALGORITHM</span><strong>POSEIDON2</strong>
+          <span>POOL</span><strong>KRYPTEX</strong>
+          <span>STATUS</span><strong id="dashboard-status">CONNECTING…</strong>
+        </div>
+        <div class="mining-refresh-row"><span id="last-refresh">Awaiting first refresh</span><button id="refresh-mining" type="button">REFRESH NOW</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard" class="section shell mining-dashboard">
+    <div class="section-title mining-title-row">
+      <div>
+        <div class="eyebrow">LIVE DASHBOARD</div>
+        <h2>Community hashrate at a glance.</h2>
+        <p>Data refreshes automatically about once per minute. Pool telemetry is fetched from the public Kryptex QTC miner API.</p>
+      </div>
+      <a class="text-link" href="https://pool.kryptex.com/qtc/api/v3/miner/workers/krxYR9ZGWQ" target="_blank" rel="noopener">OPEN RAW WORKER API ↗</a>
+    </div>
+
+    <div class="mining-kpis" aria-live="polite">
+      <article><span>HASHRATE // 30M</span><strong id="hashrate-30m">—</strong><small>short-window pool estimate</small></article>
+      <article><span>HASHRATE // 3H</span><strong id="hashrate-3h">—</strong><small>medium-window pool estimate</small></article>
+      <article><span>HASHRATE // 24H</span><strong id="hashrate-24h">—</strong><small>long-window pool estimate</small></article>
+      <article><span>ACTIVE WORKERS</span><strong id="active-workers">—</strong><small id="worker-total-note">of — reported</small></article>
+      <article><span>VALID SHARES</span><strong id="valid-shares">—</strong><small>reported by worker API</small></article>
+      <article><span>STALE / INVALID</span><strong id="bad-shares">—</strong><small>stale + invalid shares</small></article>
+    </div>
+
+    <div class="hash-window-panel">
+      <div class="hash-window-head"><strong>HASHRATE WINDOWS</strong><span>Relative view of reported 30m / 3h / 24h hashrate</span></div>
+      <div class="hash-bars">
+        <div><span>30M</span><div class="hash-track"><i id="bar-30m"></i></div><b id="bar-label-30m">—</b></div>
+        <div><span>3H</span><div class="hash-track"><i id="bar-3h"></i></div><b id="bar-label-3h">—</b></div>
+        <div><span>24H</span><div class="hash-track"><i id="bar-24h"></i></div><b id="bar-label-24h">—</b></div>
+      </div>
+    </div>
+
+    <div class="mining-grid-2">
+      <section class="worker-panel">
+        <div class="panel-head">
+          <div><span class="eyebrow">WORKER LEADERBOARD</span><h3>Who's hashing now.</h3></div>
+          <small>Sorted by reported 30m hashrate</small>
+        </div>
+        <div class="worker-table-wrap">
+          <table class="worker-table">
+            <thead><tr><th>#</th><th>Worker</th><th>Status</th><th>30m</th><th>3h</th><th>24h</th><th>Shares</th></tr></thead>
+            <tbody id="worker-table-body"><tr><td colspan="7" class="table-loading">Loading public worker data…</td></tr></tbody>
+          </table>
+        </div>
+        <p class="panel-note">Worker names are public contribution identifiers. They are not wallets, ownership records, or promises of payout.</p>
+      </section>
+
+      <aside class="telemetry-panel">
+        <div class="eyebrow">POOL TELEMETRY</div>
+        <h3>What the API is reporting.</h3>
+        <div class="telemetry-list">
+          <div><span>Miner software</span><strong id="miner-software">—</strong></div>
+          <div><span>Server / region</span><strong id="miner-region">—</strong></div>
+          <div><span>Pool-side QTC</span><strong id="pool-balance">—</strong></div>
+          <div><span>Payout records</span><strong id="payout-count">—</strong></div>
+        </div>
+        <p id="api-note" class="panel-note">Telemetry source connecting…</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section darker">
+    <div class="shell treasury-dashboard">
+      <div class="section-title">
+        <div class="eyebrow">TREASURY ACCOUNTING</div>
+        <h2>Pool telemetry and settled treasury funds are different things.</h2>
+        <p>
+          QTC shown by the mining API represents mining-side telemetry. The official BTC treasury balance below is read independently
+          from the Bitcoin network. Mining value should not be treated as settled community treasury BTC until it has actually been
+          converted/withdrawn and received by the published treasury address.
+        </p>
+      </div>
+
+      <div class="treasury-grid">
+        <article class="treasury-card featured">
+          <span>OFFICIAL COMMUNITY BTC TREASURY</span>
+          <strong class="treasury-address">bc1qhvd4zpzpu6hrvkxyl0kh4hndlxwssxq0h5w8f0</strong>
+          <div class="treasury-stat"><b id="btc-treasury-balance">—</b><small>live BTC balance</small></div>
+          <div class="treasury-stat"><b id="btc-tx-count">—</b><small>address transactions</small></div>
+          <a class="text-link" href="https://mempool.space/address/bc1qhvd4zpzpu6hrvkxyl0kh4hndlxwssxq0h5w8f0" target="_blank" rel="noopener">VERIFY ON MEMPOOL.SPACE ↗</a>
+        </article>
+        <article class="treasury-card">
+          <span>CURRENT MINING ASSET</span>
+          <strong>QUANTUS (QTC)</strong>
+          <p>The community operation currently contributes hashrate to Kryptex's QTC pool using the Poseidon2 algorithm.</p>
+        </article>
+        <article class="treasury-card">
+          <span>REWARD USE POLICY</span>
+          <strong>COMMUNITY BUYBACK + BURN</strong>
+          <p>Community-mining rewards are reserved for the published community buyback/burn mechanism and are excluded from creator compensation.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell ledger-section">
+    <div class="section-title">
+      <div class="eyebrow">BUYBACK / BURN HISTORY</div>
+      <h2>Public accounting ledger.</h2>
+      <p>Only completed community-mining actions belong here. Planned actions are not recorded as completed.</p>
+    </div>
+    <div id="mining-ledger" class="ledger-list" aria-live="polite"></div>
+  </section>
+
+  <section id="join" class="section darker">
+    <div class="shell join-grid">
+      <div>
+        <div class="eyebrow">JOIN COMMUNITY MINING</div>
+        <h2>Point your miner at the Goblin Grid.</h2>
+        <p>
+          No WattGoblin email/password is required. Contributors connect directly to Kryptex Pool using the public WattGoblin mining identifier
+          plus a unique worker name. Mining this way contributes rewards to the WattGoblin community mining account; it does not create an individual payout claim.
+        </p>
+        <div class="join-warning"><strong>IMPORTANT</strong><p>Use a unique worker name so you can identify your rig on the public leaderboard. Never share your wallet seed phrase, private keys, Kryptex login, or any personal account password.</p></div>
+      </div>
+
+      <div class="join-console">
+        <div class="console-top"><span class="status-dot"></span><span>SRBMINER-MULTI // WINDOWS</span></div>
+        <div class="join-step"><b>01</b><div><strong>Get SRBMiner-MULTI</strong><p>Use the miner/provider's official source and verify the download before running it.</p></div></div>
+        <div class="join-step"><b>02</b><div><strong>Choose a worker name</strong><p>Example: <code>JEREMY01</code>, <code>RIG4090</code>, or another short unique ID.</p></div></div>
+        <div class="join-step"><b>03</b><div><strong>Use the community connection</strong><pre id="mining-command">SRBMiner-MULTI.exe --disable-cpu --algorithm quantus --pool stratum+tcp://qtc.kryptex.network:7049 --wallet krxYR9ZGWQ.YOURWORKER --password x</pre><button id="copy-command" type="button">COPY COMMAND</button></div></div>
+        <div class="join-step"><b>04</b><div><strong>Start hashing</strong><p>Your unique worker should appear on this dashboard after Kryptex begins reporting accepted shares.</p></div></div>
+      </div>
+    </div>
+
+    <div class="shell mining-connection-grid">
+      <article><span>GLOBAL</span><strong>qtc.kryptex.network:7049</strong></article>
+      <article><span>NORTH AMERICA</span><strong>qtc-us.kryptex.network:7049</strong></article>
+      <article><span>EUROPE</span><strong>qtc-eu.kryptex.network:7049</strong></article>
+      <article><span>WORKER FORMAT</span><strong>krxYR9ZGWQ.YOURWORKER</strong></article>
+    </div>
+    <div class="shell mining-source-links">
+      <a class="btn btn-ghost" href="https://pool.kryptex.com/qtc" target="_blank" rel="noopener">KRYPTEX QTC POOL ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/doktor83/SRBMiner-Multi" target="_blank" rel="noopener">SRBMINER SOURCE ↗</a>
+      <a class="btn btn-ghost" href="legal.html#pool">MINING POLICY →</a>
+    </div>
+  </section>
+
+  <section class="section shell mining-disclosure">
+    <div class="eyebrow">HOW THIS IS STRUCTURED</div>
+    <h2>Public contribution mining, not a holder yield program.</h2>
+    <div class="principle-list">
+      <div><b>01</b><span>Kryptex provides the pool infrastructure.</span><p>WattGoblin is currently organizing a community mining operation on Kryptex; it is not claiming to operate independent stratum infrastructure.</p></div>
+      <div><b>02</b><span>Workers contribute to one community mining account.</span><p>Unique worker names make contributions visible, but they do not create an individual claim to pool balances or treasury funds.</p></div>
+      <div><b>03</b><span>Community mining rewards stay separate from creator compensation.</span><p>The published policy reserves community-mining rewards for community-scheduled $WGBL buyback/burn activity, subject to disclosed network/pool costs.</p></div>
+      <div><b>04</b><span>No guaranteed price effect or return.</span><p>Mining, buybacks and burns do not guarantee $WGBL price appreciation, liquidity, or any return to token holders or miners.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div><strong>WATTGOBLIN</strong><div class="footer-tag">SMALL GOBLIN. BIG WATTS.</div></div>
+    <div class="footer-links">
+      <a href="project.html">Project</a><a href="roadmap.html">Roadmap</a><a href="community.html">Community</a><a href="mining.html">Mining</a>
+      <a href="faq.html">FAQ</a><a href="updates.html">Updates</a><a href="legal.html">Legal</a>
+      <a href="https://x.com/WattGoblinSOL" target="_blank" rel="noopener">X</a><a href="https://t.me/wattgoblins" target="_blank" rel="noopener">Telegram</a>
+    </div>
+    <p class="legal">WattGoblin is a community token project. Digital assets are highly volatile. Nothing on this site is financial advice, a guarantee of value, or a promise of returns. Mining contributions do not create a right to payout, yield, or treasury assets.</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -183,3 +183,11 @@ Do not publish changing market cap, profit/loss, or holder-count values as stati
 - Official BTC address: `bc1qhvd4zpzpu6hrvkxyl0kh4hndlxwssxq0h5w8f0` (Bitcoin Native SegWit).
 - Community page now states that the treasury wallet is live while the Kryptex community mining pool remains in setup and is not yet operational.
 - Updated the Legal & Transparency page “Last Updated” date to October 1, 2026.
+
+
+## V16 — Community Mining Live Dashboard
+- Added `mining.html` + `mining.js`.
+- Live Kryptex QTC worker telemetry via public API.
+- Live BTC treasury balance via mempool.space API.
+- Worker leaderboard, hashrate windows, shares, accounting ledger, and join instructions.
+- Updated Community, FAQ, Project, Roadmap, Legal/Transparency and Updates to reflect live mining status.
