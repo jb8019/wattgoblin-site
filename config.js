@@ -16,6 +16,8 @@ window.WATTGOBLIN_CONFIG.mining = {
   balanceApi: "https://pool.kryptex.com/qtc/api/v1/miner/balance/krxYR9ZGWQ",
   payoutsApi: "https://pool.kryptex.com/qtc/api/v1/miner/payouts/krxYR9ZGWQ",
   btcTreasury: "bc1qhvd4zpzpu6hrvkxyl0kh4hndlxwssxq0h5w8f0",
+  // Public read-only relay deployed for this GitHub Pages website.
+  relayBase: "https://wattgoblin-mining-relay.wattgoblin.workers.dev/api/mining/",
   refreshMs: 60000,
   // Add only completed, verifiable community mining actions here.
   ledger: []

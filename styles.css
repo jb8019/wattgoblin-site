@@ -534,3 +534,5 @@ p{color:var(--muted)}
 @media(max-width:560px){.mining-kpis,.treasury-grid,.mining-connection-grid{grid-template-columns:1fr}.treasury-card.featured{grid-column:auto}.hash-bars>div{grid-template-columns:38px 1fr}.hash-bars b{grid-column:2;text-align:left}.hash-window-head{flex-direction:column}.ledger-entry{grid-template-columns:1fr;gap:10px}.mining-refresh-row{align-items:flex-start;flex-direction:column}.mining-refresh-row button{width:100%}.mining-source-links .btn{width:100%}}
 .community-mining-cta{grid-column:1/-1;display:flex;justify-content:flex-start;margin-top:-12px}
 .mining-home-teaser{background:radial-gradient(circle at 82% 20%,rgba(183,255,0,.10),transparent 26%),linear-gradient(180deg,#0b0f0a,#070907);border-block:1px solid rgba(255,255,255,.05)}
+/* Cached metrics keep their values and display their source time on hover. */
+.telemetry-stale { color: #d9ae63 !important; }
