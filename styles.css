@@ -538,3 +538,26 @@ p{color:var(--muted)}
 .mining-home-teaser{background:radial-gradient(circle at 82% 20%,rgba(183,255,0,.10),transparent 26%),linear-gradient(180deg,#0b0f0a,#070907);border-block:1px solid rgba(255,255,255,.05)}
 /* Cached metrics keep their values and display their source time on hover. */
 .telemetry-stale { color: #d9ae63 !important; }
+
+/* V22 — persistent BUY $WGBL access */
+.buy-fab{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:9999;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:0 20px;
+  border:1px solid #fff200;
+  border-radius:999px;
+  background:#fff200;
+  color:#080a08!important;
+  text-decoration:none;
+  font-weight:950;
+  letter-spacing:.04em;
+  box-shadow:0 10px 32px rgba(0,0,0,.45),0 0 28px rgba(255,242,0,.22);
+}
+.buy-fab:hover{transform:translateY(-2px);box-shadow:0 12px 38px rgba(0,0,0,.55),0 0 36px rgba(255,242,0,.34)}
+@media(max-width:560px){.buy-fab{right:14px;bottom:14px;min-height:44px;padding:0 16px;font-size:.78rem}}
