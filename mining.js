@@ -9,7 +9,7 @@
   let timer = null;
   let refreshing = false;
   const snapshots = new Map();
-  const cacheKey = 'wattgoblin-mining-v18-' + (cfg.minerId || 'krxYR9ZGWQ');
+  const cacheKey = 'wattgoblin-mining-v19-' + (cfg.minerId || 'krxYR9ZGWQ');
   const maxAge = 24 * 60 * 60 * 1000;
 
   const $ = (id) => document.getElementById(id);
