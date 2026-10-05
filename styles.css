@@ -19,6 +19,8 @@ img{display:block;max-width:100%}
 .nav-links a{text-decoration:none;color:#dce1d8}
 .nav-links a:hover{color:var(--yellow)}
 .x-link{padding:9px 15px;border:1px solid var(--yellow);border-radius:999px;color:var(--yellow)!important}
+.buy-link{padding:10px 16px;border-radius:999px;background:var(--yellow);color:#080a08!important;box-shadow:0 0 24px rgba(255,242,0,.18);white-space:nowrap}
+.buy-link:hover{color:#080a08!important;transform:translateY(-1px);box-shadow:0 0 34px rgba(255,242,0,.30)}
 .hero{position:relative;overflow:hidden}
 .hero-home{min-height:810px;display:flex;align-items:center}
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
@@ -80,11 +82,11 @@ p{color:var(--muted)}
 .roadmap-hero{background:radial-gradient(circle at 20% 0,rgba(183,255,0,.12),transparent 25%),linear-gradient(180deg,#0d100c,#070907)}
 .roadmap{max-width:1000px}.phase{display:grid;grid-template-columns:110px 1fr;position:relative}.phase-rail{position:relative;border-right:1px solid var(--line);padding-top:8px}.phase-rail::after{content:"";position:absolute;right:-5px;top:10px;width:9px;height:9px;border-radius:50%;background:#4b5248;border:1px solid #7e8779}.phase.current .phase-rail::after{background:var(--yellow);box-shadow:0 0 18px var(--yellow)}.phase-rail span{font:900 1.2rem/1 ui-monospace,monospace;color:#70796d}.phase-body{padding:0 0 90px 44px}.phase-status{display:inline-block;padding:6px 9px;border:1px solid rgba(255,255,255,.11);border-radius:999px;font:850 .64rem/1 monospace;letter-spacing:.13em;color:#929c8d}.phase.current .phase-status{color:#080a08;background:var(--yellow);border-color:var(--yellow)}.phase-body h2{font-size:clamp(2rem,4vw,3.6rem);margin-bottom:12px}.phase-body ul{margin:24px 0 0;padding:0;list-style:none;display:grid;gap:10px}.phase-body li{position:relative;padding-left:22px;color:#c1c8bd}.phase-body li::before{content:"⚡";position:absolute;left:0;color:var(--yellow);font-size:.8rem}.roadmap-note{margin-left:110px;padding:24px 28px;border:1px solid var(--line);background:rgba(255,242,0,.04);border-radius:14px}.roadmap-note strong{color:var(--yellow);letter-spacing:.08em}
 @media(max-width:900px){
- .nav-links a:not(.x-link){display:none}.hero-grid{grid-template-columns:1fr;padding-top:360px;gap:35px}.hero-home{min-height:980px}.hero-bg{object-position:40% center}.hero-overlay{background:linear-gradient(0deg,rgba(5,7,5,.98) 8%,rgba(5,7,5,.75) 55%,rgba(5,7,5,.24))}
+ .nav-links a:not(.buy-link){display:none}.hero-grid{grid-template-columns:1fr;padding-top:360px;gap:35px}.hero-home{min-height:980px}.hero-bg{object-position:40% center}.hero-overlay{background:linear-gradient(0deg,rgba(5,7,5,.98) 8%,rgba(5,7,5,.75) 55%,rgba(5,7,5,.24))}
  .intro-grid,.token-grid,.page-hero-grid{grid-template-columns:1fr}.page-hero-grid img{max-width:320px}.three-cards,.goals-grid{grid-template-columns:1fr 1fr}.preview-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.legal{margin:0;text-align:left}.manifesto{grid-template-columns:1fr}.manifesto-number{font-size:6rem}.principle-list>div{grid-template-columns:50px 1fr}.principle-list p{grid-column:2}.phase{grid-template-columns:70px 1fr}.roadmap-note{margin-left:70px}
 }
 @media(max-width:560px){
- .shell{width:min(var(--max),calc(100% - 28px))}.nav{min-height:64px}.brand span{font-size:.84rem}.brand img{width:36px;height:36px}.x-link{font-size:.72rem;padding:8px 10px!important}
+ .shell{width:min(var(--max),calc(100% - 28px))}.nav{min-height:64px}.brand span{font-size:.84rem}.brand img{width:36px;height:36px}.x-link{font-size:.72rem;padding:8px 10px!important}.buy-link{font-size:.70rem;padding:9px 11px!important}
  .hero-home{min-height:900px}.hero-grid{padding:310px 0 58px}.hero h1,.page-hero h1{font-size:clamp(3.2rem,15vw,5rem)}.countdown{grid-template-columns:repeat(2,1fr)}.section{padding:76px 0}.three-cards,.goals-grid{grid-template-columns:1fr}.footer-links{flex-wrap:wrap}.page-hero{padding:110px 0 70px}.principle-list>div{grid-template-columns:40px 1fr;gap:14px}.phase{grid-template-columns:48px 1fr}.phase-body{padding-left:24px}.roadmap-note{margin-left:48px}
 }
 
