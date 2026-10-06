@@ -1,0 +1,116 @@
+name: Publish website and refresh supply
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17,47 * * * *'
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/configure-pages@v5
+      - name: Build numeric supply snapshots from finalized Solana data
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs/promises';
+          const mint = 'FB2QBAbX5KQnVnWjFMyn6d7zNqXWVWqGey4CUm9Kpump';
+          const curve = 'BA2CoWBxoVLfn87rWfrP5w6qVr4BzJRvnsidx1c5eV6w';
+          const vault = '5MwZas6f4srYdNVx5hZUX1rQ7qXEUHLRrv9eFamGTcBm';
+          const owners = ['BC92zfkGFWNzjEkgMxfPMB4BNDcrC5mXWP6zizcd4nZS','21vmx2PyocYzgfKQEJW8s24cW96akNzg5729McLuNCCY','DHCaXBT1ypyMNWXCq23nHseBu8qu5AqfiSEKEEvBudL2'];
+          const endpoints = ['https://solana-rpc.publicnode.com','https://api.mainnet-beta.solana.com'];
+          function units(amount) {
+            if (!/^\d+$/.test(amount)) throw Error('Invalid on-chain amount');
+            return BigInt(amount);
+          }
+          function decimal(amount, decimals) {
+            const raw = amount.toString().padStart(decimals + 1, '0');
+            return decimals ? raw.slice(0,-decimals) + '.' + raw.slice(-decimals) : raw;
+          }
+          async function snapshot(endpoint) {
+            let nextId = 0;
+            const slots = [];
+            async function rpc(method, params) {
+              const response = await fetch(endpoint, {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:++nextId,method,params}),signal:AbortSignal.timeout(25000)});
+              if (!response.ok) throw Error('RPC HTTP '+response.status);
+              const data = await response.json();
+              if (data.error || !data.result) throw Error(JSON.stringify(data.error || 'Missing result'));
+              if (data.result.context) slots.push(data.result.context.slot);
+              return data.result;
+            }
+            const config = {commitment:'finalized'};
+            const supply = await rpc('getTokenSupply',[mint,config]);
+            const decimals = supply.value.decimals;
+            if (decimals !== 6) throw Error('Unexpected decimals; review required');
+            const curveData = await rpc('getAccountInfo',[curve,{...config,encoding:'base64'}]);
+            if (!curveData.value || curveData.value.owner !== '6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P') throw Error('Curve missing or changed; review required');
+            const curveBytes = Buffer.from(curveData.value.data[0],'base64');
+            if (curveBytes.length < 49 || curveBytes[48] !== 0) throw Error('Curve graduated or changed; review circulation methodology');
+            const balance = await rpc('getTokenAccountBalance',[vault,config]);
+            if (balance.value.decimals !== decimals) throw Error('Vault decimals mismatch');
+            const holdings = [];
+            for (const owner of owners) {
+              const accounts = await rpc('getTokenAccountsByOwner',[owner,{mint},{...config,encoding:'jsonParsed'}]);
+              let total = 0n;
+              for (const account of accounts.value) {
+                const info = account.account.data.parsed.info;
+                if (info.mint !== mint || info.owner !== owner || info.tokenAmount.decimals !== decimals) throw Error('Account mismatch');
+                total += units(info.tokenAmount.amount);
+              }
+              holdings.push({owner,amount:total});
+            }
+            const total = units(supply.value.amount);
+            const inventory = units(balance.value.amount);
+            const project = holdings.reduce((n,h)=>n+h.amount,0n);
+            const circulating = total - inventory - project;
+            if (circulating < 0n || circulating > total) throw Error('Inconsistent balances; refusing publication');
+            return {total,inventory,project,circulating,holdings,decimals,slots,endpoint};
+          }
+          let data;
+          for (const endpoint of endpoints) {
+            try { data = await snapshot(endpoint); break; }
+            catch (error) { console.error(endpoint+': '+error.message); }
+          }
+          if (!data) throw Error('All RPC sources failed; no supply snapshot published');
+          const amount = n=>decimal(n,data.decimals);
+          const metadata = {
+            mint,updatedAt:new Date().toISOString(),refreshTargetMinutes:30,
+            source:data.endpoint,commitment:'finalized',contextSlotRange:[Math.min(...data.slots),Math.max(...data.slots)],
+            decimals:data.decimals,totalSupply:amount(data.total),circulatingSupply:amount(data.circulating),
+            circulatingSupplyStatus:'provisional project estimate; not CoinMarketCap-verified',
+            methodology:'Total supply minus entire pre-graduation Pump.fun vault inventory minus WGBL balances in the three disclosed project-controlled wallets. Excluding the full trading vault is a conservative assumption. CMC may classify inventory/liquidity differently. Review required after graduation or wallet changes.',
+            pumpVault:{tokenAccount:vault,amount:amount(data.inventory)},
+            projectWallets:data.holdings.map(h=>({owner:h.owner,amount:amount(h.amount)})),
+            alternativeIncludingVault:amount(data.total-data.project),
+            caveat:'Periodically refreshed snapshot, not a request-time live API. Scheduled runs and CDN updates can be delayed. Check updatedAt before using. Failed refreshes leave the previously deployed timestamp unchanged.'
+          };
+          await fs.mkdir('api',{recursive:true});
+          await fs.writeFile('api/total-supply.json',amount(data.total)+'\n');
+          await fs.writeFile('api/circulating-supply.json',amount(data.circulating)+'\n');
+          await fs.writeFile('api/supply-metadata.json',JSON.stringify(metadata,null,2)+'\n');
+          await fs.writeFile('api/index.html','<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WGBL Supply Data</title><body style="max-width:48rem;margin:3rem auto;padding:1rem;font-family:system-ui;line-height:1.6"><h1>WGBL supply data</h1><p>Last successful refresh: '+metadata.updatedAt+'</p><p>Total supply: '+metadata.totalSupply+' WGBL</p><p>Provisional circulating-supply estimate: '+metadata.circulatingSupply+' WGBL. This estimate excludes the entire Pump.fun vault and disclosed project wallets. CoinMarketCap may use different inventory or liquidity treatment.</p><p>These are periodically refreshed snapshots, targeted every 30 minutes. Check the timestamp; refreshes can fail or be delayed.</p><ul><li><a href="total-supply.json">Total supply (numeric JSON)</a></li><li><a href="circulating-supply.json">Provisional circulating supply (numeric JSON)</a></li><li><a href="supply-metadata.json">Timestamp, wallet balances and methodology</a></li></ul><p><a href="/">WattGoblin</a> · <a href="https://support.coinmarketcap.com/hc/en-us/articles/360043396252-Supply-Circulating-Total-Max">CMC supply methodology</a></p></body></html>');
+          console.log(JSON.stringify(metadata,null,2));
+          NODE
+      - name: Package the existing static website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: '.'
+      - name: Deploy website and supply data
+        id: deployment
+        uses: actions/deploy-pages@v4
